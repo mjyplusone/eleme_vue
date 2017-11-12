@@ -4,7 +4,8 @@
             <ul>
                 <li v-for="item in goods" class="menu-item">
                     <span class="text border-1px">
-                        <span v-show="item.type>0" class="icon" :class="classMap[item.type]"></span>{{ item.name }}
+                        <!-- <span v-show="item.type>0" class="icon" :class="classMap[item.type]"></span> -->
+                        <icon :iconType="item.type" :iconStyle="3"></icon>{{ item.name }}
                     </span>
                 </li>
             </ul>
@@ -14,6 +15,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+    import icon from 'components/icon/icon.vue';
+
     const ERR_OK = 0;
 
     export default {
@@ -28,7 +31,7 @@
             };
         },
         created() {
-            this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
+            // this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
             this.$http.get('/api/goods').then((response) => {
                 response = response.body;
                 if (response.errno === ERR_OK) {
@@ -36,6 +39,9 @@
                     console.log(this.goods);
                 }
             });
+        },
+        components: {
+            icon
         }
     };
 </script>
@@ -60,24 +66,24 @@
                 width: 56px
                 padding: 0 12px
                 line-height: 14px
-                .icon
-                    display: inline-block
-                    vertical-align: top
-                    width: 12px
-                    height: 12px
-                    margin-right: 2px
-                    background-size: 12px 
-                    background-repeat: no-repeat
-                    &.decrease
-                        bg-image("decrease_3")
-                    &.discount
-                        bg-image("discount_3")
-                    &.guarantee
-                        bg-image("guarantee_3")
-                    &.invoice
-                        bg-image("invoice_3")
-                    &.special
-                        bg-image("special_3")
+                // .icon
+                //     display: inline-block
+                //     vertical-align: top
+                //     width: 12px
+                //     height: 12px
+                //     margin-right: 2px
+                //     background-size: 12px 
+                //     background-repeat: no-repeat
+                //     &.decrease
+                //         bg-image("decrease_3")
+                //     &.discount
+                //         bg-image("discount_3")
+                //     &.guarantee
+                //         bg-image("guarantee_3")
+                //     &.invoice
+                //         bg-image("invoice_3")
+                //     &.special
+                //         bg-image("special_3")
                 .text
                     display: table-cell
                     width: 56px

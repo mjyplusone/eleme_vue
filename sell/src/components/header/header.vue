@@ -13,7 +13,8 @@
                     {{ seller.description }}/{{ seller.deliveryTime }}分钟送达
                 </div>
                 <div v-if="seller.supports" class="support">
-                    <span class="icon" :class="classMap[seller.supports[0].type]"></span>
+                    <!-- <span class="icon" :class="classMap[seller.supports[0].type]"></span> -->
+                    <icon :iconType="seller.supports[0].type" :iconStyle="1"></icon>
                     <span class="text">{{ seller.supports[0].description }}</span>
                 </div>
             </div>
@@ -46,7 +47,8 @@
                         <v-title :title="'优惠信息'"></v-title>
                         <ul v-if="seller.supports" class="supports">
                             <li class="support-item" v-for="(item, index) in seller.supports">
-                                <span class="icon" :class="classMap[seller.supports[index].type]"></span>
+                                <!-- <span class="icon" :class="classMap[seller.supports[index].type]"></span> -->
+                                <icon :iconType="seller.supports[index].type" :iconStyle="2"></icon>
                                 <span class="text">{{ seller.supports[index].description }}</span>
                             </li>
                         </ul>
@@ -67,6 +69,7 @@
 <script type="text/ecmascript-6">
     import star from 'components/star/star.vue';
     import title from 'components/title/title.vue';
+    import icon from 'components/icon/icon.vue';
 
     export default {
         props: {
@@ -89,12 +92,13 @@
                 this.detailShow = false;
             }
         },
-        created() {
-            this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
-        },
+        // created() {
+        //     this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
+        // },
         components: {
             star,
-            'v-title': title
+            'v-title': title,
+            icon
         }
     };
 </script>
@@ -139,24 +143,24 @@
                     line-height: 12px
                     font-size: 12px
                 .support
-                    .icon
-                        display: inline-block
-                        vertical-align: top
-                        width: 12px
-                        height: 12px
-                        margin-right: 4px
-                        background-size: 12px 
-                        background-repeat: no-repeat
-                        &.decrease
-                            bg-image("decrease_1")
-                        &.discount
-                            bg-image("discount_1")
-                        &.guarantee
-                            bg-image("guarantee_1")
-                        &.invoice
-                            bg-image("invoice_1")
-                        &.special
-                            bg-image("special_1")
+                    // .icon
+                    //     display: inline-block
+                    //     vertical-align: top
+                    //     width: 12px
+                    //     height: 12px
+                    //     margin-right: 4px
+                    //     background-size: 12px 
+                    //     background-repeat: no-repeat
+                    //     &.decrease
+                    //         bg-image("decrease_1")
+                    //     &.discount
+                    //         bg-image("discount_1")
+                    //     &.guarantee
+                    //         bg-image("guarantee_1")
+                    //     &.invoice
+                    //         bg-image("invoice_1")
+                    //     &.special
+                    //         bg-image("special_1")
                     .text
                         line-height: 12px
                         font-size: 10px  
@@ -263,24 +267,24 @@
                             font-size: 0
                             &:last-child
                                 margin-bottom: 0
-                            .icon
-                                display: inline-block
-                                width: 16px
-                                height: 16px
-                                vertical-align: top
-                                margin-right: 6px
-                                background-size: 16px
-                                background-repeat: no-repeat
-                                &.decrease
-                                    bg-image("decrease_2")
-                                &.discount
-                                    bg-image("discount_2")
-                                &.guarantee
-                                    bg-image("guarantee_2")
-                                &.invoice
-                                    bg-image("invoice_2")
-                                &.special
-                                    bg-image("special_2")
+                            // .icon
+                            //     display: inline-block
+                            //     width: 16px
+                            //     height: 16px
+                            //     vertical-align: top
+                            //     margin-right: 6px
+                            //     background-size: 16px
+                            //     background-repeat: no-repeat
+                            //     &.decrease
+                            //         bg-image("decrease_2")
+                            //     &.discount
+                            //         bg-image("discount_2")
+                            //     &.guarantee
+                            //         bg-image("guarantee_2")
+                            //     &.invoice
+                            //         bg-image("invoice_2")
+                            //     &.special
+                            //         bg-image("special_2")
                             .text
                                 line-height: 16px
                                 font-size: 12px
