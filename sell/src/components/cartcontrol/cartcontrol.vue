@@ -33,6 +33,8 @@
                 } else {
                     this.food.count ++;
                 }
+                // this.$dispatch('cart.add', event.target);
+                this.$emit('cartadd', event.target);
             },
             decreaseCart(event) {
                 if (!event._constructed) {
@@ -46,7 +48,7 @@
     };
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+ <style lang="stylus" rel="stylesheet/stylus">
     .cartcontrol
         font-size: 0
         .cart-decrease
