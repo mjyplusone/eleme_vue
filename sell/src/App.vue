@@ -20,6 +20,7 @@
 
 <script type="text/ecmascript-6">
   import header from 'components/header/header.vue';
+  import {urlParse} from './common/js/util.js';
 
   const ERROK = 0;
   
@@ -27,7 +28,12 @@
     // data必须是函数
     data() {
       return {
-        seller: {}
+        seller: {
+          id: (() => {
+            let queryParm = urlParse();
+            return queryParm.id;
+          })()
+        }
       };
     },
     created() {

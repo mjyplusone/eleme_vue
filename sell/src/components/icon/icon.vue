@@ -84,10 +84,10 @@
     
     .icon-4
         @extend .icon
-        width: 12px
-        height: 12px
-        margin-right: 2px
-        background-size: 12px 
+        width: 16px
+        height: 16px
+        margin-right: 6px
+        background-size: 16px 
         &.decrease
             bg-image("decrease_4")
         &.discount
