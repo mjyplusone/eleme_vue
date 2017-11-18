@@ -14,7 +14,9 @@
       </div>
     </div>
     <!-- 路由外链 -->
-    <router-view :seller="seller"></router-view>
+    <keep-alive>
+      <router-view :seller="seller"></router-view>
+    </keep-alive>
   </div>
 </template>
 
@@ -37,13 +39,14 @@
       };
     },
     created() {
-      this.$http.get('/api/seller').then((response) => {
+      this.$http.get('/api/seller?id=' + this.seller.id).then((response) => {
         // response = response.json();
         response = response.body;
         // 服务端返回errno为0和data
         if (response.errno === ERROK) {
-          this.seller = response.data;
-          console.log(this.seller);
+          // this.seller = response.data;   // 注意不能加这句，加了这句id值会不存在
+          this.seller = Object.assign({}, this.seller, response.data);
+          console.log(this.seller.id);
         }
       });
     },

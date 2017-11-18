@@ -75,6 +75,7 @@
     import star from 'components/star/star.vue';
     import split from 'components/split/split.vue';
     import icon from 'components/icon/icon.vue';
+    import {saveToLocal, loadFromLocal} from '../../common/js/store.js';
 
     export default {
         props: {
@@ -84,7 +85,9 @@
         },
         data() {
             return {
-                favorite: false
+                favorite: (() => {
+                    return loadFromLocal(this.seller.id, 'favorite', false);
+                })()
             };
         },
         computed: {
@@ -140,6 +143,7 @@
                     return;
                 }
                 this.favorite = !this.favorite;
+                saveToLocal(this.seller.id, 'favorite', this.favorite);
             }
         }
     };
